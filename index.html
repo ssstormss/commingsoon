@@ -4,145 +4,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gramcord | Coming Soon</title>
+
+<title>Gramcord | Launching Soon</title>
+<meta name="description" content="Gramcord is launching soon. A new community platform is coming.">
+
+<!-- Open Graph (Preview bei Discord etc.) -->
+
+<meta property="og:title" content="Gramcord">
+<meta property="og:description" content="Launching soon. Stay tuned.">
+<meta property="og:type" content="website">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    height: 100vh;
-    background: #000;
-    color: #fff;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
+    height:100vh;
+    background:#000;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
 }
 
+/* Animated glow */
 body::before {
-    content: "";
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
-    filter: blur(90px);
-    z-index: 0;
+    content:"";
+    position:absolute;
+    width:900px;
+    height:900px;
+    background:radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%);
+    filter:blur(120px);
+    animation: glowMove 12s infinite alternate ease-in-out;
 }
 
+@keyframes glowMove {
+    from { transform:translate(-50px,-30px); }
+    to { transform:translate(50px,30px); }
+}
+
+/* Particles canvas */
+#bgCanvas {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+
+/* Content */
 .container {
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-    padding: 20px;
+    position:relative;
+    z-index:2;
+    max-width:650px;
+    padding:20px;
 }
 
 .logo {
-    width: 220px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
+    width:220px;
+    margin-bottom:20px;
+    filter:drop-shadow(0 0 25px rgba(255,255,255,0.25));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-8px); }
 }
 
 .brand {
-    font-size: 3rem;
-    letter-spacing: 6px;
-    font-weight: bold;
+    font-size:3rem;
+    letter-spacing:6px;
+    font-weight:bold;
 }
 
 .subtitle {
-    color: #aaa;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
+    color:#aaa;
+    margin-bottom:15px;
+    letter-spacing:2px;
 }
 
-.coming {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    color: #ddd;
+.status {
+    font-size:1.2rem;
+    margin-bottom:25px;
+    color:#ddd;
 }
 
+/* Countdown */
 .countdown {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 .time-box {
-    background: rgba(255,255,255,0.05);
-    padding: 15px 20px;
-    border-radius: 10px;
-    min-width: 80px;
+    background:rgba(255,255,255,0.05);
+    padding:15px 22px;
+    border-radius:12px;
+    min-width:90px;
+    backdrop-filter:blur(6px);
 }
 
 .time-box span {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
+    display:block;
+    font-size:2rem;
+    font-weight:bold;
 }
 
 .time-box small {
-    color: #aaa;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    color:#aaa;
+    font-size:0.8rem;
+    letter-spacing:1px;
 }
 
 footer {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
-    font-size: 12px;
-    color: #666;
+    position:absolute;
+    bottom:15px;
+    width:100%;
+    font-size:12px;
+    color:#666;
 }
 </style>
 
 </head>
 <body>
 
+<canvas id="bgCanvas"></canvas>
+
 <div class="container">
-    <img src="logo.png" alt="Gramcord Logo" class="logo">
+    <img src="logo.png" class="logo" alt="Gramcord">
 
 ```
 <div class="brand">GRAMCORD</div>
 <div class="subtitle">Community • Network • Platform</div>
+<div class="status" id="statusText">Launching in</div>
 
-<div class="coming">Launching Soon</div>
-
-<div class="countdown">
-    <div class="time-box">
-        <span id="days">0</span>
-        <small>DAYS</small>
-    </div>
-    <div class="time-box">
-        <span id="hours">0</span>
-        <small>HOURS</small>
-    </div>
-    <div class="time-box">
-        <span id="minutes">0</span>
-        <small>MINUTES</small>
-    </div>
-    <div class="time-box">
-        <span id="seconds">0</span>
-        <small>SECONDS</small>
-    </div>
+<div class="countdown" id="countdown">
+    <div class="time-box"><span id="days">0</span><small>DAYS</small></div>
+    <div class="time-box"><span id="hours">0</span><small>HOURS</small></div>
+    <div class="time-box"><span id="minutes">0</span><small>MINUTES</small></div>
+    <div class="time-box"><span id="seconds">0</span><small>SECONDS</small></div>
 </div>
 ```
 
 </div>
 
-<footer>
-© 2026 Gramcord
-</footer>
+<footer>© 2026 Gramcord</footer>
 
 <script>
-// FESTES LAUNCH-DATUM (für alle gleich)
-// Format: Jahr-Monat-TagTStunde:Minute:Sekunde
-const launchDate = new Date("2026-02-24T18:00:00").getTime();
+/* ===== SETTINGS ===== */
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance
+// Startzeit (UTC) – hier ändern wenn du neu starten willst
+const startDate = Date.UTC(2026, 1, 17, 20, 0, 0);
+
+// Countdown Dauer
+const durationDays = 7;
+
+// Zielseite nach Launch
+const redirectURL = "https://veilgard.de/app";
+
+/* ==================== */
+
+const launchDate = startDate + (durationDays * 24 * 60 * 60 * 1000);
+
+function updateCountdown(){
+    const now = Date.now();
+    const distance = launchDate - now;
+
+    if(distance <= 0){
+        document.getElementById("statusText").textContent = "Gramcord is now live";
+        document.getElementById("countdown").style.display = "none";
+
+        // Redirect nach 3 Sekunden
+        setTimeout(()=>{
+            window.location.href = redirectURL;
+        },3000);
+
+        return;
+    }
+
+    const days = Math.floor(distance/(1000*60*60*24));
+    const hours = Math.floor((distance/(1000*60*60))%24);
+    const minutes = Math.floor((distance/(1000*60))%60);
+    const seconds = Math.floor((distance/1000)%60);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* ===== Background Particles ===== */
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+const particles = [];
+for(let i=0;i<60;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        vx:(Math.random()-0.5)*0.3,
+        vy:(Math.random()-0.5)*0.3,
+        size:Math.random()*2
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="rgba(255,255,255,0.3)";
+
+    particles.forEach(p=>{
+        p.x+=p.vx;
+        p.y+=p.vy;
+
+        if(p.x<0||p.x>canvas.width) p.vx*=-1;
+        if(p.y<0||p.y>canvas.height) p.vy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
