@@ -1,173 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RipperSec | Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gramcord | Coming Soon</title>
 
-        body {
-            height: 100vh;
-            background: #000;
-            color: #fff;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Glow Background */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
-            filter: blur(90px);
-            z-index: 0;
-        }
+body {
+    height: 100vh;
+    background: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 600px;
-            padding: 20px;
-        }
+body::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+    filter: blur(90px);
+    z-index: 0;
+}
 
-        .logo {
-            width: 220px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
-        }
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    padding: 20px;
+}
 
-        .brand {
-            font-size: 3rem;
-            letter-spacing: 6px;
-            font-weight: bold;
-        }
+.logo {
+    width: 220px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
+}
 
-        .subtitle {
-            color: #aaa;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
+.brand {
+    font-size: 3rem;
+    letter-spacing: 6px;
+    font-weight: bold;
+}
 
-        .coming {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #ddd;
-        }
+.subtitle {
+    color: #aaa;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
 
-        /* Countdown */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
-        }
+.coming {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: #ddd;
+}
 
-        .time-box {
-            background: rgba(255,255,255,0.05);
-            padding: 15px 20px;
-            border-radius: 10px;
-            min-width: 80px;
-        }
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
-        .time-box span {
-            display: block;
-            font-size: 2rem;
-            font-weight: bold;
-        }
+.time-box {
+    background: rgba(255,255,255,0.05);
+    padding: 15px 20px;
+    border-radius: 10px;
+    min-width: 80px;
+}
 
-        .time-box small {
-            color: #aaa;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
+.time-box span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
 
-        footer {
-            position: absolute;
-            bottom: 15px;
-            width: 100%;
-            font-size: 12px;
-            color: #666;
-        }
-    </style>
+.time-box small {
+    color: #aaa;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+footer {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    font-size: 12px;
+    color: #666;
+}
+</style>
+
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="RipperSec Logo" class="logo">
-        <div class="brand">RIPPERSEC</div>
-        <div class="subtitle">Security • Hacking • Community</div>
-        <div class="coming">Coming Soon</div>
 
-        <div class="countdown">
-            <div class="time-box">
-                <span id="days">0</span>
-                <small>DAYS</small>
-            </div>
-            <div class="time-box">
-                <span id="hours">0</span>
-                <small>HOURS</small>
-            </div>
-            <div class="time-box">
-                <span id="minutes">0</span>
-                <small>MINUTES</small>
-            </div>
-            <div class="time-box">
-                <span id="seconds">0</span>
-                <small>SECONDS</small>
-            </div>
-        </div>
+<div class="container">
+    <img src="logo.png" alt="Gramcord Logo" class="logo">
+
+```
+<div class="brand">GRAMCORD</div>
+<div class="subtitle">Community • Network • Platform</div>
+
+<div class="coming">Launching Soon</div>
+
+<div class="countdown">
+    <div class="time-box">
+        <span id="days">0</span>
+        <small>DAYS</small>
     </div>
+    <div class="time-box">
+        <span id="hours">0</span>
+        <small>HOURS</small>
+    </div>
+    <div class="time-box">
+        <span id="minutes">0</span>
+        <small>MINUTES</small>
+    </div>
+    <div class="time-box">
+        <span id="seconds">0</span>
+        <small>SECONDS</small>
+    </div>
+</div>
+```
 
-    <footer>
-        &copy; 2026 RipperSec
-    </footer>
+</div>
 
-    <script>
-        // 7 days countdown from first visit
-        let launchDate = localStorage.getItem("rippersecLaunch");
+<footer>
+© 2026 Gramcord
+</footer>
 
-        if (!launchDate) {
-            const now = new Date();
-            now.setDate(now.getDate() + 7);
-            launchDate = now.getTime();
-            localStorage.setItem("rippersecLaunch", launchDate);
-        }
+<script>
+// FESTES LAUNCH-DATUM (für alle gleich)
+// Format: Jahr-Monat-TagTStunde:Minute:Sekunde
+const launchDate = new Date("2026-02-24T18:00:00").getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
-
-            if (distance < 0) {
-                document.getElementById("days").innerText = "0";
-                document.getElementById("hours").innerText = "0";
-                document.getElementById("minutes").innerText = "0";
-                document.getElementById("seconds").innerText = "0";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
-</body>
-</html>
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance
